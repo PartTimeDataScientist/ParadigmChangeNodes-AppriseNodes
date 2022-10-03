@@ -1,0 +1,13 @@
+name: apprise_nodes
+channels:
+  - knime
+  - conda-forge
+dependencies:
+  - packaging
+  - python
+  - knime-extension
+  - knime-python-base
+  - pandas
+  - pip >= 20
+  - pip:
+    - apprise

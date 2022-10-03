@@ -1,0 +1,10 @@
+name: apprise
+group_id: de.paradigmchange
+author: PartTimeDataScientist
+env_yml_path: environment.yml
+extension_module: apprise_nodes
+description: Apprise Nodes
+long_description: This extension allows notifications through Apprise
+version: 0.1.0 
+vendor: Paradigmchange Nodes
+license_file: LICENSE.TXT 
