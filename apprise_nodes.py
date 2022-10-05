@@ -160,23 +160,14 @@ class AppriseNotifierTable1:
     apprise_configs = knext.ColumnParameter(
         label="Configurations",
         description="Select the column containing the Apprise configuration",
-        port_index=0, # the port from which to source the input table
-        include_row_key=False, # whether to include the table Row ID column in the list of selectable columns
-        include_none_column=False # whether to enable None as a selectable option, which returns "<none>"
     )
     apprise_titles = knext.ColumnParameter(
         label="Titles",
         description="Select the column containing the titles of the messages to be sent",
-        port_index=0, # the port from which to source the input table
-        include_row_key=False, # whether to include the table Row ID column in the list of selectable columns
-        include_none_column=False # whether to enable None as a selectable option, which returns "<none>"
     )
     apprise_bodies = knext.ColumnParameter(
         label="Body",
         description="Select the column containing the body of the messages to be sent",
-        port_index=0, # the port from which to source the input table
-        include_row_key=False, # whether to include the table Row ID column in the list of selectable columns
-        include_none_column=False # whether to enable None as a selectable option, which returns "<none>"
     )
 
     def configure(self, config_context, input_schema_1):
