@@ -21,11 +21,10 @@ apprise_nodes = knext.category(
 )
 
 @knext.node(name="Notify Single URL", node_type=knext.NodeType.SINK, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
-@knext.input_table(name="Input Data", description="Just a stub for connecting the node to a workflow")
 class AppriseNotifierSingle:
     """
     This is the most simple Node in the collection of the *Apprise Nodes*.
-    It can be used to send a simple notification to a single service URL.
+    It can be used to send a simple notification to a single service URL. The connection to a workflow occurs through the (hidden) variable ports.
 
     See Apprise documentation for more details regarding supported notification URLs: https://github.com/caronc/apprise#supported-notifications
 
@@ -36,10 +35,10 @@ class AppriseNotifierSingle:
     apprise_title = knext.StringParameter("Apprise Title", "The title of the message to be sent", "FooBar")
     apprise_body = knext.StringParameter("Apprise Message", "The message to be sent", "FooBar")
 
-    def configure(self, configure_context, input_schema_1):
+    def configure(self, config_context):
         pass 
 
-    def execute(self, exec_context, input_1):
+    def execute(self, exec_context):
 
         apobj = apprise.Apprise()
 
@@ -56,11 +55,11 @@ class AppriseNotifierSingle:
         return
 
 @knext.node(name="Notify Multiple URLs", node_type=knext.NodeType.SINK, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
-@knext.input_table(name="Input Data", description="Just a stub for connecting the node to a workflow")
 class AppriseNotifierMultiple:
     """
     This is another rather simple Node in the collection of the *Apprise Nodes*.
-    It can be used to send a simple notification to *up to five* service URLs.
+    It can be used to send a simple notification to *up to five* service URLs.  The connection to a workflow occurs through the (hidden) variable ports.
+    Unused services should stay at "empty:", otherwise it is tried to add the content to Apprise!
 
     See Apprise documentation for more details regarding supported notification URLs: https://github.com/caronc/apprise#supported-notifications
 
@@ -96,10 +95,10 @@ class AppriseNotifierMultiple:
     apprise_body = knext.StringParameter("Apprise Message", "The message to be sent", "FooBar")
 
 
-    def configure(self, configure_context, input_schema_1):
+    def configure(self, config_context):
         pass 
 
-    def execute(self, exec_context, input_1):
+    def execute(self, exec_context):
 
         apobj = apprise.Apprise()
 
@@ -181,7 +180,6 @@ class AppriseNotifierTable1:
         return
 
 @knext.node(name="Notify Variable Config", node_type=knext.NodeType.SINK, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
-@knext.input_table(name="Input Data", description="Input port from which the 'apprise_config' flow variable is read")
 class AppriseNotifierVariable:
     """
     This node allows to send a simple single notification to services configured in a flow variable.
@@ -193,10 +191,13 @@ class AppriseNotifierVariable:
     apprise_title = knext.StringParameter("Apprise Title", "The title of the message to be sent", "FooBar")
     apprise_body = knext.StringParameter("Apprise Message", "The message to be sent", "FooBar")
 
-    def configure(self, configure_context, input_schema_1):
-        pass 
+    def configure(self, config_context):
+        try:
+            config = config_context.flow_variables["apprise_config"]
+        except:
+            raise ValueError("FlowVariable 'apprise_config' could not be found")
 
-    def execute(self, exec_context, input_1):
+    def execute(self, exec_context):
 
         apobj = apprise.Apprise()
 
@@ -205,11 +206,8 @@ class AppriseNotifierVariable:
         except:
             raise ValueError("FlowVariable 'apprise_config' could not be found")
 
-        if not (config.find("\n")):
-            raise ValueError("Configuration FlowVariable should contain at least one newline (\n) character.")
-        
         for line in config.split("\n"):
-            LOGGER.info("Adding url" + line + "to Apprise...")
+            LOGGER.info("Adding url " + line + " to Apprise...")
             apobj.add(line)
 
         apobj.notify(
