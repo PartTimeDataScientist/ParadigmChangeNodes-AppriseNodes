@@ -4,7 +4,7 @@ channels:
   - conda-forge
 dependencies:
   - packaging
-  - python
+  - python >= 3.10
   - knime-extension
   - knime-python-base
   - pandas
