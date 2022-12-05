@@ -13,7 +13,7 @@ paradigmchange_nodes = knext.category(
 )
 
 apprise_nodes = knext.category(
-        path="/paradigmchange_nodes/",
+        path="/community/paradigmchange_nodes/",
         level_id="apprise_nodes",
         name="Apprise Nodes",
         description="Apprise Notifications for KNIME",
