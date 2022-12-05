@@ -5,7 +5,7 @@ import pandas as pd
 LOGGER = logging.getLogger(__name__)
 
 paradigmchange_nodes = knext.category(
-        path="/",
+        path="/community",
         level_id="paradigmchange_nodes",
         name="ParadigmChange Nodes",
         description="ParadigmChange Nodes for KNIME",
