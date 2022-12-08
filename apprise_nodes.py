@@ -23,15 +23,17 @@ apprise_nodes = knext.category(
 @knext.node(name="Notify Single URL", node_type=knext.NodeType.OTHER, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
 class AppriseNotifierSingle:
     """
-    This is the most simple Node in the collection of the *Apprise Nodes*.
-    It can be used to send a simple notification to a single service URL. The connection to a workflow occurs through the (hidden) variable ports.
+# Send notification to a single service.
 
-    See Apprise documentation for more details regarding supported notification URLs: https://github.com/caronc/apprise#supported-notifications
+This is the most simple Node in the collection of the *Apprise Nodes*.
+It can be used to send a simple notification to a single service URL. The connection to a workflow occurs through the (hidden) variable ports.
 
-    Icons for ParadigmChange Nodes and Apprise Nodes are taken from Freepik: https://www.freepik.com
+See [Apprise documentation](https://github.com/caronc/apprise#supported-notifications) for more details regarding supported notification URLs.
+
+Icons for ParadigmChange Nodes and Apprise Nodes are taken from [Freepik](https://www.freepik.com)!
     """
 
-    apprise_url = knext.StringParameter("Apprise URL", "See here https://github.com/caronc/apprise/wiki", "pover://user@token/DEVICE")
+    apprise_url = knext.StringParameter("Apprise URL", "See the [Apprise wiki](https://github.com/caronc/apprise/wiki) for a list of supported URLs", "pover://user@token/DEVICE")
     apprise_title = knext.StringParameter("Apprise Title", "The title of the message to be sent", "FooBar")
     apprise_body = knext.StringParameter("Apprise Message", "The message to be sent", "FooBar")
 
@@ -68,38 +70,40 @@ class AppriseNotifierSingle:
 @knext.node(name="Notify Multiple URLs", node_type=knext.NodeType.OTHER, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
 class AppriseNotifierMultiple:
     """
-    This is another rather simple Node in the collection of the *Apprise Nodes*.
-    It can be used to send a simple notification to *up to five* service URLs.  The connection to a workflow occurs through the (hidden) variable ports.
-    Unused services should stay at "empty:", otherwise it is tried to add the content to Apprise and may raise errors!
+# Send notification to a up to five services.
 
-    See Apprise documentation for more details regarding supported notification URLs: https://github.com/caronc/apprise#supported-notifications
+This is another rather simple Node in the collection of the *Apprise Nodes*.
+It can be used to send a simple notification to *up to five* service URLs. The connection to a workflow occurs through the (hidden) variable ports.
+**Unused services should stay at "empty:", otherwise it is tried to add the content to Apprise and may raise errors!**
 
-    Icons for ParadigmChange Nodes and Apprise Nodes are taken from Freepik: https://www.freepik.com
+See [Apprise documentation](https://github.com/caronc/apprise#supported-notifications) for more details regarding supported notification URLs.
+
+Icons for ParadigmChange Nodes and Apprise Nodes are taken from [Freepik](https://www.freepik.com)!
     """
 
     apprise_url1 = knext.StringParameter(
         label = "Apprise URL 1",
-        description = "See here for details: https://github.com/caronc/apprise/wiki",
+        description = "See the [Apprise wiki](https://github.com/caronc/apprise/wiki) for a list of supported URLs",
         default_value= "pover://user@token/DEVICE"
         )
     apprise_url2 = knext.StringParameter(
         label = "Apprise URL 2",
-        description = "See here for details: https://github.com/caronc/apprise/wiki",
+        description = "See the [Apprise wiki](https://github.com/caronc/apprise/wiki) for a list of supported URLs",
         default_value= "empty:"
         )
     apprise_url3 = knext.StringParameter(
         label = "Apprise URL 3",
-        description = "See here for details: https://github.com/caronc/apprise/wiki",
+        description = "See the [Apprise wiki](https://github.com/caronc/apprise/wiki) for a list of supported URLs",
         default_value= "empty:"
         )
     apprise_url4 = knext.StringParameter(
         label = "Apprise URL 4",
-        description = "See here for details: https://github.com/caronc/apprise/wiki",
+        description = "See the [Apprise wiki](https://github.com/caronc/apprise/wiki) for a list of supported URLs",
         default_value= "empty:"
         )
     apprise_url5 = knext.StringParameter(
         label = "Apprise URL 5",
-        description = "See here for details: https://github.com/caronc/apprise/wiki",
+        description = "See the [Apprise wiki](https://github.com/caronc/apprise/wiki) for a list of supported URLs",
         default_value= "empty:"
         )
     apprise_title = knext.StringParameter("Apprise Title", "The title of the message to be sent", "FooBar")
@@ -149,12 +153,14 @@ class AppriseNotifierMultiple:
 @knext.input_table(name="Input", description="The table containing the Apprise configuration data")
 class AppriseNotifierTable1:
     """
-    This node can be used to send out a series of notifications defined in a table. It expects a table with at least three columns, one containing the notification URL and the other two with the message titles and message bodies.
-    A typical application could be to notify the whole team about an issue with everyone receiving the notification on his or her preferred service.
+# Send notification to services defined in a KNIME table
 
-    See Apprise documentation for more details regarding supported notification URLs: https://github.com/caronc/apprise#supported-notifications
+This node can be used to send out a series of notifications defined in a table. It expects a table with at least three columns, one containing the notification URL and the other two with the message titles and message bodies.
+A typical application could be to notify the whole team about an issue with everyone receiving the notification on his or her preferred service.
 
-    Icons for ParadigmChange Nodes and Apprise Nodes are taken from Freepik: https://www.freepik.com
+See [Apprise documentation](https://github.com/caronc/apprise#supported-notifications) for more details regarding supported notification URLs.
+
+Icons for ParadigmChange Nodes and Apprise Nodes are taken from [Freepik](https://www.freepik.com)!
     """
 
     apprise_configs = knext.ColumnParameter(
@@ -220,10 +226,14 @@ class AppriseNotifierTable1:
 @knext.node(name="Notify Variable Config", node_type=knext.NodeType.OTHER, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes, is_deprecated=True)
 class AppriseNotifierVariable:
     """
-    This node allows to send a simple single notification to services configured in a flow variable.
-    See Apprise documentation for more details regarding supported notification URLs: https://github.com/caronc/apprise#supported-notifications
+# Send single notification to serivices configured in a flow variable
 
-    Icons for ParadigmChange Nodes and Apprise Nodes are taken from Freepik: https://www.freepik.com
+This node allows to send a simple single notification to services configured in a flow variable.
+See [Apprise documentation](https://github.com/caronc/apprise#supported-notifications) for more details regarding supported notification URLs.
+
+**This node is deprecated as all of it's functionality can be achieved with one of the other nodes as well!**
+
+Icons for ParadigmChange Nodes and Apprise Nodes are taken from [Freepik](https://www.freepik.com)!
     """
 
     apprise_title = knext.StringParameter("Apprise Title", "The title of the message to be sent", "FooBar")
