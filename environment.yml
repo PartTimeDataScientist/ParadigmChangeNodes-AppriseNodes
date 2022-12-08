@@ -5,9 +5,10 @@ channels:
 dependencies:
   - packaging
   - python >= 3.10
-  - knime-extension
-  - knime-python-base
+  - knime-extension >= 4.7
+  - knime-python-base >= 4.7
+  - markdown
   - pandas
   - pip >= 20
   - pip:
-    - apprise
+    - apprise >= 1.2.0
