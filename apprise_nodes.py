@@ -20,7 +20,7 @@ apprise_nodes = knext.category(
         icon="icons/megaphone-64-freepik.png",
 )
 
-@knext.node(name="Notify Single URL", node_type=knext.NodeType.SINK, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
+@knext.node(name="Notify Single URL", node_type=knext.NodeType.OTHER, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
 class AppriseNotifierSingle:
     """
     This is the most simple Node in the collection of the *Apprise Nodes*.
@@ -65,7 +65,7 @@ class AppriseNotifierSingle:
 
         return
 
-@knext.node(name="Notify Multiple URLs", node_type=knext.NodeType.SINK, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
+@knext.node(name="Notify Multiple URLs", node_type=knext.NodeType.OTHER, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
 class AppriseNotifierMultiple:
     """
     This is another rather simple Node in the collection of the *Apprise Nodes*.
@@ -145,7 +145,7 @@ class AppriseNotifierMultiple:
 
         return
 
-@knext.node(name="Notify Table Rows", node_type=knext.NodeType.SINK, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
+@knext.node(name="Notify Table Rows", node_type=knext.NodeType.OTHER, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
 @knext.input_table(name="Input", description="The table containing the Apprise configuration data")
 class AppriseNotifierTable1:
     """
@@ -217,7 +217,7 @@ class AppriseNotifierTable1:
 
         return
 
-@knext.node(name="Notify Variable Config", node_type=knext.NodeType.SINK, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes)
+@knext.node(name="Notify Variable Config", node_type=knext.NodeType.OTHER, icon_path="icons/megaphone-64-freepik.png", category=apprise_nodes, is_deprecated=True)
 class AppriseNotifierVariable:
     """
     This node allows to send a simple single notification to services configured in a flow variable.
