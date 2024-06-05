@@ -11,4 +11,4 @@ dependencies:
   - pandas
   - pip >= 20
   - pip:
-    - apprise >= 1.4.5
+    - apprise >= 1.8.0

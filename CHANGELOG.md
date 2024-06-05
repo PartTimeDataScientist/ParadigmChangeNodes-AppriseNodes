@@ -5,6 +5,15 @@ All notable changes to the Apprise Nodes will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) as far as possible.
 
+## [0.4.0] - 2024-06-05
+
+### Added 
+
+- Updated Apprise library to [1.8.0](https://github.com/caronc/apprise/releases/tag/v1.8.0)
+
+### Changed
+
+### Deprecated
 
 ## [0.3.1] - 2023-06-03
 
