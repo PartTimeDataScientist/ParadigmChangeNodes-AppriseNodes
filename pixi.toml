@@ -5,19 +5,20 @@ platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
 [tasks]
 
 [dependencies]
-python = "3.11.*"
+python = "*"
 knime-extension = "*"
 knime-python-base = "*"
-packaging = ">=25.0,<26"
-markdown = ">=3.8.2,<4"
+knime-python-versions = "5.12.*"
+packaging = ">=25.0"
+markdown = ">=3.8.2"
 apprise = ">=1.8.0"
 
 [feature.build.dependencies]
-python = "3.9.*"
-knime-extension-bundling = "5.5.*"
+python = "*"
+knime-extension-bundling = "5.12.*"
 
 [feature.build.tasks]
-build = { args = [{ "arg" = "dest", "default" = "./local-update-site" }], cmd = "python ./.pixi/envs/build/bin/build_python_extension.py . {{ dest }}"}
+build = { args = [{ "arg" = "dest", "default" = "./local-update-site" }], cmd = "python ./.pixi/envs/build/bin/build_python_extension.py . {{ dest }} --update-sites-version 5.12"}
 
 [environments]
 build = {features = ["build"], no-default-feature = true}
